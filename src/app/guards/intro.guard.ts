@@ -10,7 +10,7 @@ constructor(private storage: Storage, private router: Router) {}
 
   async canActivate() {
 
-    return await this.storage.get('viLaIntro') ?? 
+    return await this.storage.get('viLaIntro') ? true : 
     this.router.navigateByUrl('/intro');
   }
 }
