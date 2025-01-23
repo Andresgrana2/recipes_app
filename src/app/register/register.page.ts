@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { validPasswordConfirmation } from './util/passwordValid';
+import { AuthService } from '../services/auth.service';
+import { NavController } from '@ionic/angular';
 
 
 @Component({
@@ -43,6 +45,8 @@ export class RegisterPage implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private navController: NavController
   ) { 
    
       this.registerForm = this.formBuilder.group({
@@ -83,8 +87,13 @@ export class RegisterPage implements OnInit {
   }
 
 
-  registerUser(credentials: any) {
-    console.log('Registering user');
+  registerUser(registerData: any) {
+    this.authService.register(registerData).then((res) => {
+      this.errorMessage = '';
+      this.navController.navigateRoot('/login');
+    }, (err) => {
+      this.errorMessage = err;
+    });
   
   }
 
