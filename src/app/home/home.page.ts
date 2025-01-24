@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { PostService } from '../services/post.service';
 
 @Component({
   selector: 'app-home',
@@ -6,8 +7,23 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
   standalone: false,
 })
-export class HomePage {
+export class HomePage implements OnInit {
 
-  constructor() {}
+  posts: any;
+
+  constructor(
+    private postService: PostService,
+  ) {}
+
+
+
+  ngOnInit(): void {
+    this.postService.getPosts().then((posts: any) => {
+     this.posts = posts;
+    });
+  }
+
+
+
 
 }
