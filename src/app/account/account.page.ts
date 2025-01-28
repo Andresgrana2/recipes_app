@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { Storage } from '@ionic/storage-angular';
+import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';	
+import { defineCustomElements } from '@ionic/pwa-elements/loader';
+defineCustomElements(window);
 
 @Component({
   selector: 'app-account',
@@ -9,7 +12,6 @@ import { Storage } from '@ionic/storage-angular';
   standalone: false,
 })
 export class AccountPage implements OnInit {
-
   user_data: any = {
     name: '',
     email: '',
@@ -24,11 +26,9 @@ export class AccountPage implements OnInit {
     private storage: Storage
   ) { }
 
-  takePhoto() {}
-
   async ngOnInit() {
 
-    let user: any = await localStorage.getItem("user");
+    let user: any = await this.storage.get("user");
 
     this.userService.getUser(user?.id).then((data: any) => {
       console.log(data);
@@ -38,5 +38,32 @@ export class AccountPage implements OnInit {
       console.log(error);
     });
   }
+
+  async takePhoto() {
+    const capturedPhoto = await Camera.getPhoto({
+      resultType: CameraResultType.DataUrl,
+      source: CameraSource.Camera,
+      quality: 100
+    });
+
+    this.user_data.image = capturedPhoto.dataUrl;
+    this.update();
+  }
+
+  
+  async update() {
+    this.userService.updateUser(this.user_data).then(
+      (data) => {
+        console.log(data);
+      }
+    ).catch(
+      (error) => {
+        console.log(error);
+      });
+
+      
+  }
+
+  
 
 }

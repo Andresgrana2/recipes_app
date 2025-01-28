@@ -13,20 +13,42 @@ export class UserService {
     private http: HttpClient
   ) { }
 
-getUser(id: any) {
-  return new Promise((accept, reject) => {
-    this.http.get(this.urlServer + '/posts', this.httpHeaders)
-    .subscribe((data: any) => {
-        accept(data);
-    }, (error) => {
-      if(error.status == 422) 
-        reject('Usuario o contraseña incorrectos');
-      else if(error.status == 500) 
-        reject('Error en el servidor');
-      else
-       reject('Error obtener usuario');
+  getUser(id: any){
+    return new Promise((accept, reject) => {
+      this.http.get(`${this.urlServer}/current_user/${id}`, this.httpHeaders).subscribe(
+        (data: any)=>{
+            accept(data);
+        },
+        (error) => {
+          console.log(error, 'error');
+           if (error.status == 500){
+            reject('Error Porfavor intenta mas tarde');
+          }else{
+            reject('Error al obtener el usuario');
+          }
+        }
+      )
     });
+  }
 
+updateUser(user: any){
+  const user_params = {
+    user: user
+  }
+  return new Promise((accept, reject) => {
+    this.http.post(`${this.urlServer}/update/${user.id}`, user_params, this.httpHeaders).subscribe(
+      (data: any)=>{
+          accept(data);
+      },
+      (error) => {
+        console.log(error, 'error');
+         if (error.status == 500){
+          reject('Error Porfavor intenta mas tarde');
+        }else{
+          reject('Error al actualizar el usuario');
+        }
+      }
+    )
   });
 }
 }
