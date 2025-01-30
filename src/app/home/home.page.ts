@@ -15,6 +15,7 @@ export class HomePage implements OnInit {
   page: number = 1;
   limit: number = 10;
   hasMore: boolean = true;
+  isLoading: boolean = false;
 
   constructor(
     private postService: PostService,
@@ -23,9 +24,12 @@ export class HomePage implements OnInit {
 
 
 
-  ngOnInit(): void {
+  ngOnInit(){
     console.log('Init Home');
     this.loadPosts();
+    this.postService.postCreated.subscribe((newPost: any)=>{
+      this.posts.unshift(newPost);
+    })
   }
 
   loadPosts(event?: any){
