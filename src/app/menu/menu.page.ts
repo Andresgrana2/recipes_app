@@ -11,6 +11,12 @@ import { Storage } from '@ionic/storage-angular';1
 })
 export class MenuPage implements OnInit {
 
+  user: any = {
+    name: '',
+    last_name: '',
+    image: ''
+  };
+
   constructor(
     private menuController: MenuController,
     private navCtrl: NavController,
@@ -18,6 +24,11 @@ export class MenuPage implements OnInit {
   ) { }
 
   ngOnInit() {
+
+   let usera = this.storage.get('user').then((usera) => {
+    this.user = usera ;
+   });
+ 
   }
 
   closeMenu() {

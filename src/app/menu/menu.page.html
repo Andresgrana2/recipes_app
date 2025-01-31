@@ -11,6 +11,30 @@
       </ion-toolbar>
     </ion-header>
     <ion-content> 
+
+      
+      <ion-router-link routerLink="/menu/account">
+      <ion-item lines="none" style="text-align: center; padding: 10px;">
+        
+        <ion-avatar >
+          <img alt="User Avatar" [src]="user.image" />
+        </ion-avatar>
+        <div style="margin-top: 10px;">{{user.name+' '+ user.last_name}}</div>
+      </ion-item>
+      </ion-router-link>
+
+      <ion-router-link routerLink="/menu/home">
+        <ion-item>
+          <ion-icon name="home-outline"></ion-icon>Home
+        </ion-item>
+      </ion-router-link>
+
+      <ion-router-link routerLink="/menu/search-users">
+        <ion-item>
+          <ion-icon name="search-outline"></ion-icon>Search Users
+        </ion-item>
+      </ion-router-link>
+
         <ion-item (click)="logout()">
           <ion-icon  name="log-out-outline"></ion-icon>Salir
         </ion-item>

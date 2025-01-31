@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>register</ion-title>
+    <ion-title>Register</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -62,7 +62,7 @@
        *ngIf="(registerForm.get('passwordConfirmation')?.hasError(error.type) && registerForm.get('passwordConfirmation')?.dirty)">{{error.message}}</ion-label>
     </ng-container>
 
-    <ion-button expand="full" type="submit" [disabled]="registerForm.invalid">Registrar</ion-button>
+    <ion-button expand="full" type="submit" [disabled]="registerForm.invalid">Create</ion-button>
     
     
 

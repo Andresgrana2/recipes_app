@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
@@ -8,7 +8,7 @@ export class UserService {
 
   urlServer = 'http://51.79.26.171';
   httpHeaders = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
-
+  userUpdated: EventEmitter<any> = new EventEmitter();
   constructor(
     private http: HttpClient
   ) { }
@@ -39,6 +39,8 @@ updateUser(user: any){
     this.http.post(`${this.urlServer}/update/${user.id}`, user_params, this.httpHeaders).subscribe(
       (data: any)=>{
           accept(data);
+
+          this.userUpdated.emit(data.user);
       },
       (error) => {
         console.log(error, 'error');

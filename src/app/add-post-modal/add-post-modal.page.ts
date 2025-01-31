@@ -85,4 +85,10 @@ export class AddPostModalPage implements OnInit {
     );
   }
 
+
+  dismiss(){
+    
+    this.modalController.dismiss();
+  }
+
 }
