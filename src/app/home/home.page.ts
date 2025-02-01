@@ -34,6 +34,8 @@ export class HomePage implements OnInit {
 
   loadPosts(event?: any){
     console.log('Load Posts');
+
+    this.isLoading = true;
     this.postService.getPosts(this.page, this.limit).then(
       (data: any)=>{
         if (data.length > 0){
@@ -42,13 +44,14 @@ export class HomePage implements OnInit {
         }else{
           this.hasMore = false;
         }
-
+        this.isLoading = false;
         if (event){
           event.target.complete();
         }
       },
       (error)=>{
         console.log(error);
+        this.isLoading = false;
         if (event){
           event.target.complete();
         }

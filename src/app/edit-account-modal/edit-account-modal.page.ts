@@ -157,4 +157,9 @@ export class EditAccountModalPage implements OnInit {
   }
 
 
+  disminss(){
+    this.modalController.dismiss();
+  }
+
+
 }

@@ -1,25 +1,22 @@
-<ion-content>
+<ion-content >
   <swiper-container
-  slides-per-view="1"
-  pagination="true"
+    slides-per-view="1"
+    pagination="true"
   >
-    <swiper-slide class="bg-color-slide">
-      <h1 class="title1">Hola Slide 1</h1>
-      <img src="/assets/images/gatitos-bebes-1.jpg">
+    <swiper-slide class="bg-color-slide background-image-1 swiper-slide-content">
+      <h1 class="title1">Descubre Recetas</h1>
       <ion-icon name="cafe-outline"></ion-icon>
-      <p>Hola soy el slide uno de la libreria swiper</p>
+      <p>Déjate llevar por una explosión de colores y frescura.</p>
     </swiper-slide>
-    <swiper-slide>
-      <h1>Hola Slide 2</h1>
-      <img src="https://www.mundogatos.com/Uploads/mundogatos.com/ImagenesGrandes/fotos-de-gatitos-3-0.jpg">
+    <swiper-slide class="bg-color-slide background-image-2 swiper-slide-content">
+      <h1>Publica tus mejores platos</h1>
       <ion-icon name="battery-charging-outline"></ion-icon>
-      <p>Hola soy el slide dos de la libreria swiper</p>
+      <p>Comparte tus creaciones culinarias y sorprende a todos. </p>
     </swiper-slide>
-    <swiper-slide>
-      <h1>Hola Slide 3</h1>
+    <swiper-slide class="bg-color-slide background-image-1 swiper-slide-content">
+      <h1>Comienza Ahora</h1>
       <ion-icon class="close-icon" name="close" (click)="finish()"></ion-icon>
-      <ion-icon name="battery-charging-outline"></ion-icon>
-      <p>Hola soy el slide tres de la libreria swiper</p>
+      <ion-button expand="full" (click)="finish()" type="button" >Get Started</ion-button>
     </swiper-slide>
   </swiper-container>
 </ion-content>

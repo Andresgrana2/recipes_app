@@ -97,4 +97,8 @@ export class RegisterPage implements OnInit {
   
   }
 
+  back(){
+    this.navController.navigateRoot('/login');
+  }
+
 }

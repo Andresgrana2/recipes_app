@@ -41,7 +41,12 @@ export class AccountPage implements OnInit {
     });
 
     this.userService.userUpdated.subscribe((user: any)=>{
-      this.user_data = {...this.user_data,  name: user.name,  last_name :user.last_name, image: user.image};
+
+      let userSaved = {...this.user_data,  name: user.name,  last_name :user.last_name, image: user.image};
+
+      this.user_data = userSaved;
+
+      this.storage.set('user', userSaved);
 
       this.modalController.dismiss();
     });

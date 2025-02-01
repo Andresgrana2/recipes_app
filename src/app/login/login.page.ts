@@ -20,8 +20,7 @@ export class LoginPage implements OnInit {
       { type: 'email', message: 'Enter a valid email.' }
     ],
     password: [
-      { type: 'required', message: 'Password is required.' },
-    { type: 'minlength', message: 'Password must be at least 6 characters long.'}]
+      { type: 'required', message: 'Password is required.' }]
   };
 
   constructor(
@@ -37,7 +36,6 @@ export class LoginPage implements OnInit {
           Validators.email
         ])),
         password: new FormControl('', Validators.compose([
-          Validators.minLength(6),
           Validators.required
         ]))
       });
@@ -56,8 +54,10 @@ export class LoginPage implements OnInit {
       this.errorMessage ='';
       this.storage.set('user', res.user);
       console.log(res);
-      this.navCtrl.navigateForward('/menu/home');
       this.storage.set('isUserLoggedIn', true);
+      this.navCtrl.navigateForward('/menu/home');
+      this.navCtrl.navigateForward('/menu/home');
+      this.loginForm.reset();
     }).catch(err => {
       this.errorMessage = err;
     });

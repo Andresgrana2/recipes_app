@@ -13,9 +13,7 @@ swiper-container {
   color: red;
   }
   
-  .bg-color-slide {
-  background-color: magenta;
-  }
+
 
 
   .close-icon{
@@ -23,5 +21,54 @@ swiper-container {
     top: 10px;
     right: 10px;
     font-size: 35px;
-    color: white;
+    color: black;
+  }
+
+  .background-image-1 {
+    background-image: url('../../assets/backgound-1.png'); 
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    width: 100%;
+  }
+
+  .background-image-2 {
+    background-image: url('../../assets/backgound-2.png'); 
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    width: 100%;
+  }
+
+  .background-image-3 {
+    background-image: url('../../assets/backgound-3.png'); 
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    width: 100%;
+  }
+
+  .swiper-slide-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: #000000;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .swiper-slide-content h1 {
+    font-size: 2.5rem;
+    color: #000000;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    margin-bottom: 0.5rem;
+  }
+  
+  .swiper-slide-content p {
+    font-size: 1.2rem;
+    color: #000000;
+    max-width: 80%;
+    text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.15);
   }
